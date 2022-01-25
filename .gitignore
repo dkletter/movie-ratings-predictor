@@ -1,3 +1,7 @@
+# Config files
+api_key.py
+config.py
+
 # Byte-compiled / optimized / DLL files
 **/.DS_Store
 .DS_Store

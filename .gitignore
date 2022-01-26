@@ -5,6 +5,8 @@ config.py
 # Byte-compiled / optimized / DLL files
 **/.DS_Store
 .DS_Store
+.history
+.gitattributes
 __pycache__/
 *.py[cod]
 *$py.class

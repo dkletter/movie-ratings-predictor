@@ -64,6 +64,12 @@ def fetchStar():
     return jsonify(data)
 
 
+@app.route('/predict', methods=['POST'])
+def predict():
+    print(request.json)
+    return jsonify("ok")
+
+
 @app.route('/')
 def main():
     return render_template('index.html')

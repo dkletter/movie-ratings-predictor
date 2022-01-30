@@ -1,19 +1,29 @@
+let selectedRatings, selectedGenres, selectedDirectors, selectedWriters, selectedActors, selectedLanguages, selectedCountries, selectedStars;
+let directorNames, writerNames, actorNames, languageNames, countryNames, starNames;
+
 d3.json("/actors").then((data) => {
     //printinb data
     // console.log(data);
 
-    actorNames = data.map(row => row.Actor);
+    this.actorNames = data.map(row => row.Actor);
 
     // adding ids in the dropdown menu
     d3.select("#actor").selectAll('option')
-        .data(actorNames)
+        .data(this.actorNames)
         .enter()
         .append('option')
         .text((d) => { return d; })
         .attr("value", function (d) { return d; });
 
     // enable multi-select
-    $('#actor').multiselect();
+    $('#actor').multiselect({
+        onChange: (element, checked) => {
+            this.selectedActors = [];
+            $('#actor option:selected').each((index, selVal) => {
+                this.selectedActors.push($(selVal).val());
+            });
+        }
+    });
 });
 
 
@@ -21,36 +31,50 @@ d3.json("/country").then((data) => {
     //printinb data
     // console.log(data);
 
-    countryNames = data.map(row => row.Country);
+    this.countryNames = data.map(row => row.Country);
 
     // adding countries in the dropdown menu
     d3.select("#country").selectAll('option')
-        .data(countryNames)
+        .data(this.countryNames)
         .enter()
         .append('option')
         .text((d) => { return d; })
         .attr("value", function (d) { return d; });
 
     // enable multi-select
-    $('#country').multiselect();
+    $('#country').multiselect({
+        onChange: (element, checked) => {
+            this.selectedCountries = [];
+            $('#country option:selected').each((index, selVal) => {
+                this.selectedCountries.push($(selVal).val());
+            });
+        }
+    });
 });
 
 d3.json("/language").then((data) => {
     //printinb data
     // console.log(data);
 
-    languageNames = data.map(row => row.Language);
+    this.languageNames = data.map(row => row.Language);
 
     // adding languages in the dropdown menu
     d3.select("#language").selectAll('option')
-        .data(languageNames)
+        .data(this.languageNames)
         .enter()
         .append('option')
         .text((d) => { return d; })
         .attr("value", function (d) { return d; });
 
     // enable multi-select
-    $('#language').multiselect();
+    $('#language').multiselect({
+        onChange: (element, checked) => {
+            this.selectedLanguages = [];
+            $('#language option:selected').each((index, selVal) => {
+                this.selectedLanguages.push($(selVal).val());
+            });
+        }
+    });
 });
 
 
@@ -58,34 +82,41 @@ d3.json("/writer").then((data) => {
     //printinb data
     //console.log(data);
 
-    writerNames = data.map(row => row.Writer);
+    this.writerNames = data.map(row => row.Writer);
 
     // adding writers in the dropdown menu
     d3.select("#writer").selectAll('option')
-        .data(writerNames)
+        .data(this.writerNames)
         .enter()
         .append('option')
         .text((d) => { return d; })
         .attr("value", function (d) { return d; });
 
     // enable multi-select
-    $('#writer').multiselect();
+    $('#writer').multiselect({
+        onChange: (element, checked) => {
+            this.selectedWriters = [];
+            $('#writer option:selected').each((index, selVal) => {
+                this.selectedWriters.push($(selVal).val());
+            });
+        }
+    });
 });
 
-ratedNames = ['R', 'PG-13', 'PG', 'G', 'NA']
-
+// Rated selection
+let ratingNames = ['R', 'PG-13', 'PG', 'G', 'NA']
 d3.select("#rated").selectAll('option')
-    .data(ratedNames)
+    .data(ratingNames)
     .enter()
     .append('option')
     .text((d) => { return d; })
     .attr("value", function (d) { return d; });
 
-genre = ['Action', 'Comedy', 'Drama', 'Biography', 'Animation', 'Crime', 'Adventure',
+let genreNames = ['Action', 'Comedy', 'Drama', 'Biography', 'Animation', 'Crime', 'Adventure',
     'Horror', 'Fantasy', 'Mystery', 'Thriller', 'Romance', 'Musical', 'Sport', 'Sci-Fi', 'Family']
 
 d3.select("#genre").selectAll('option')
-    .data(genre)
+    .data(genreNames)
     .enter()
     .append('option')
     .text((d) => { return d; })
@@ -95,40 +126,168 @@ d3.json("/director").then((data) => {
     //printinb data
     //console.log(data);
 
-    directorNames = data.map(row => row.director);
+    this.directorNames = data.map(row => row.director);
 
     // adding writers in the dropdown menu
     d3.select("#director").selectAll('option')
-        .data(directorNames)
+        .data(this.directorNames)
         .enter()
         .append('option')
         .text((d) => { return d; })
         .attr("value", function (d) { return d; });
 
     // enable multi-select
-    $('#director').multiselect();
+    $('#director').multiselect({
+        onChange: (element, checked) => {
+            this.selectedDirectors = [];
+            $('#director option:selected').each((index, selVal) => {
+                this.selectedDirectors.push($(selVal).val());
+            });
+        }
+    });
 });
 
 d3.json("/star").then((data) => {
     //printinb data
     //console.log(data);
 
-    starNames = data.map(row => row.star);
+    this.starNames = data.map(row => row.star);
 
     // adding writers in the dropdown menu
     d3.select("#star").selectAll('option')
-        .data(starNames)
+        .data(this.starNames)
         .enter()
         .append('option')
         .text((d) => { return d; })
         .attr("value", function (d) { return d; });
 
     // enable multi-select
-    $('#star').multiselect();
+    $('#star').multiselect({
+        onChange: (element, checked) => {
+            this.selectedStars = [];
+            $('#star option:selected').each((index, selVal) => {
+                this.selectedStars.push($(selVal).val());
+            });
+        }
+    });
 });
 
 $(document).ready(function () {
     // enable multi-select for static values defined here
-    $('#rated').multiselect();
-    $('#genre').multiselect();
+    $('#rated').multiselect({
+        onChange: (element, checked) => {
+            selectedRatings = [];
+            $('#rated option:selected').each((index, selVal) => {
+                selectedRatings.push($(selVal).val());
+            });
+        }
+    });
+
+    $('#genre').multiselect({
+        onChange: (element, checked) => {
+            selectedGenres = [];
+            $('#genre option:selected').each((index, selVal) => {
+                selectedGenres.push($(selVal).val());
+            });
+        }
+    });
+});
+
+// submit for prediction
+d3.select("#predict").on("click", () => {
+    // console.log(this.selectedActors);
+    // console.log(this.selectedLanguages);
+    // console.log(this.selectedCountries);
+    // console.log(this.selectedGenres);
+    // console.log(this.selectedStars);
+
+    let model = [];
+
+    // Rating
+    // console.log(selectedRatings);
+    ratingNames.forEach(val => {
+        if (selectedRatings && selectedRatings.includes(val)) {
+            model.push(1);
+        } else {
+            model.push(0);
+        }
+    });
+
+    // Director
+    // console.log(this.selectedDirectors);
+    this.directorNames.forEach(val => {
+        if (this.selectedDirectors && this.selectedDirectors.includes(val)) {
+            model.push(1);
+        } else {
+            model.push(0);
+        }
+    });
+
+    // Writer
+    // console.log(this.selectedWriters);
+    this.writerNames.forEach(val => {
+        if (this.selectedWriters && this.selectedWriters.includes(val)) {
+            model.push(1);
+        } else {
+            model.push(0);
+        }
+    });
+
+    // Actor
+    // console.log(this.selectedActors);
+    this.actorNames.forEach(val => {
+        if (this.selectedActors && this.selectedActors.includes(val)) {
+            model.push(1);
+        } else {
+            model.push(0);
+        }
+    });
+
+    // Language
+    // console.log(this.selectedLanguages);
+    this.languageNames.forEach(val => {
+        if (this.selectedLanguages && this.selectedLanguages.includes(val)) {
+            model.push(1);
+        } else {
+            model.push(0);
+        }
+    });
+
+    // Country
+    // console.log(this.selectedCountries);
+    this.countryNames.forEach(val => {
+        if (this.selectedCountries && this.selectedCountries.includes(val)) {
+            model.push(1);
+        } else {
+            model.push(0);
+        }
+    });
+
+    // Genre
+    // console.log(selectedGenres);
+    genreNames.forEach(val => {
+        if (selectedGenres && selectedGenres.includes(val)) {
+            model.push(1);
+        } else {
+            model.push(0);
+        }
+    });
+
+    // Star
+    // console.log(this.selectedStars);
+    this.starNames.forEach(val => {
+        if (this.selectedStars && this.selectedStars.includes(val)) {
+            model.push(1);
+        } else {
+            model.push(0);
+        }
+    });
+
+    console.log(model);
+
+    d3.json("/predict", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(model)
+    });
 });

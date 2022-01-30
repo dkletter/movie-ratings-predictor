@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- D3 library -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <title>Prediction page</title>
+</head>
+
+<body>
+
+
+  <h1>IMDB RATING PREDICTION</h1>
+  <hr>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="well">
+          <h5>Rated:</h5>
+          <select id="Rated" onchange="optionChanged(this.value)"></select>
+        </div>
+        <div class="well">
+          <h5>Director:</h5>
+          <select id="Director" onchange="optionChanged(this.value)"></select>
+        </div>
+        <div class="well">
+          <h5>Writer:</h5>
+          <select id="Writer" onchange="optionChanged(this.value)"></select>
+        </div>
+        <div class="well">
+          <h5>Actors:</h5>
+          <select id="Actors" onchange="optionChanged(this.value)"></select>
+        </div>
+        <div class="well">
+          <h5>Language:</h5>
+          <select id="Language" onchange="optionChanged(this.value)"></select>
+        </div>
+        <div class="well">
+          <h5>Country:</h5>
+          <select id="Country" onchange="optionChanged(this.value)"></select>
+        </div>
+        <div class="well">
+          <h5>Genre:</h5>
+          <select id="Genre" onchange="optionChanged(this.value)"></select>
+        </div>
+        <div class="well">
+          <h5>Star:</h5>
+          <select id="Star" onchange="optionChanged(this.value)"></select>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <script src="../static/logic.js"></script>
+</body>
+
+</html>

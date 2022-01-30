@@ -5,12 +5,15 @@ d3.json("/actors").then((data) => {
     actorNames = data.map(row => row.Actor);
 
     // adding ids in the dropdown menu
-    d3.select("#Actors").selectAll('option')
+    d3.select("#actor").selectAll('option')
         .data(actorNames)
         .enter()
         .append('option')
         .text((d) => { return d; })
         .attr("value", function (d) { return d; });
+
+    // enable multi-select
+    $('#actor').multiselect();
 });
 
 
@@ -21,12 +24,15 @@ d3.json("/country").then((data) => {
     countryNames = data.map(row => row.Country);
 
     // adding countries in the dropdown menu
-    d3.select("#Country").selectAll('option')
+    d3.select("#country").selectAll('option')
         .data(countryNames)
         .enter()
         .append('option')
         .text((d) => { return d; })
         .attr("value", function (d) { return d; });
+
+    // enable multi-select
+    $('#country').multiselect();
 });
 
 d3.json("/language").then((data) => {
@@ -36,12 +42,15 @@ d3.json("/language").then((data) => {
     languageNames = data.map(row => row.Language);
 
     // adding languages in the dropdown menu
-    d3.select("#Language").selectAll('option')
+    d3.select("#language").selectAll('option')
         .data(languageNames)
         .enter()
         .append('option')
         .text((d) => { return d; })
         .attr("value", function (d) { return d; });
+
+    // enable multi-select
+    $('#language').multiselect();
 });
 
 
@@ -52,17 +61,20 @@ d3.json("/writer").then((data) => {
     writerNames = data.map(row => row.Writer);
 
     // adding writers in the dropdown menu
-    d3.select("#Writer").selectAll('option')
+    d3.select("#writer").selectAll('option')
         .data(writerNames)
         .enter()
         .append('option')
         .text((d) => { return d; })
         .attr("value", function (d) { return d; });
+
+    // enable multi-select
+    $('#writer').multiselect();
 });
 
 ratedNames = ['R', 'PG-13', 'PG', 'G', 'NA']
 
-d3.select("#Rated").selectAll('option')
+d3.select("#rated").selectAll('option')
     .data(ratedNames)
     .enter()
     .append('option')
@@ -72,7 +84,7 @@ d3.select("#Rated").selectAll('option')
 genre = ['Action', 'Comedy', 'Drama', 'Biography', 'Animation', 'Crime', 'Adventure',
     'Horror', 'Fantasy', 'Mystery', 'Thriller', 'Romance', 'Musical', 'Sport', 'Sci-Fi', 'Family']
 
-d3.select("#Genre").selectAll('option')
+d3.select("#genre").selectAll('option')
     .data(genre)
     .enter()
     .append('option')
@@ -86,12 +98,15 @@ d3.json("/director").then((data) => {
     directorNames = data.map(row => row.director);
 
     // adding writers in the dropdown menu
-    d3.select("#Director").selectAll('option')
+    d3.select("#director").selectAll('option')
         .data(directorNames)
         .enter()
         .append('option')
         .text((d) => { return d; })
         .attr("value", function (d) { return d; });
+
+    // enable multi-select
+    $('#director').multiselect();
 });
 
 d3.json("/star").then((data) => {
@@ -101,10 +116,19 @@ d3.json("/star").then((data) => {
     starNames = data.map(row => row.star);
 
     // adding writers in the dropdown menu
-    d3.select("#Star").selectAll('option')
+    d3.select("#star").selectAll('option')
         .data(starNames)
         .enter()
         .append('option')
         .text((d) => { return d; })
         .attr("value", function (d) { return d; });
+
+    // enable multi-select
+    $('#star').multiselect();
+});
+
+$(document).ready(function () {
+    // enable multi-select for static values defined here
+    $('#rated').multiselect();
+    $('#genre').multiselect();
 });

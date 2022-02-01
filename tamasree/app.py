@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, jsonify
 import json
-import pickle
 import numpy as np
+from model import performPrediction
+from sklearn.ensemble import RandomForestClassifier
+from pickle import load
 
 
 # Define a flask app
@@ -66,8 +68,21 @@ def fetchStar():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    print(request.json)
-    return jsonify("ok")
+    # print(request.json)
+    # predictedRating=performPrediction(request.json)
+    #result = loaded_model.score(X_test, Y_test)
+
+    # load the model
+    input_data = request.json
+    model = load(open('model.pkl', 'rb'))
+    # load the scaler
+    scaler = load(open('scaler.pkl', 'rb'))
+
+    scaled_iunput = scaler.transform(request.json)
+
+    prediction = model.predict(scaled_iunput)
+
+    return jsonify(prediction)
 
 
 @app.route('/')

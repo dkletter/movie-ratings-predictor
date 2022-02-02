@@ -68,21 +68,25 @@ def fetchStar():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    # print(request.json)
+
     # predictedRating=performPrediction(request.json)
     #result = loaded_model.score(X_test, Y_test)
 
     # load the model
-    input_data = request.json
+    input_data = [np.array(request.json)]
+    # input_data_reshaped = input_data.reshape(-1, 1)
+    # print(input_data_reshaped)
+
     model = load(open('model.pkl', 'rb'))
     # load the scaler
     scaler = load(open('scaler.pkl', 'rb'))
 
-    scaled_iunput = scaler.transform(request.json)
+    scaled_iunput = scaler.transform(input_data)
 
     prediction = model.predict(scaled_iunput)
+    print(prediction)
 
-    return jsonify(prediction)
+    return jsonify(prediction.tolist())
 
 
 @app.route('/')

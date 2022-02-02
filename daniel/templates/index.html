@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Bootstrap CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<title>Your Movie Predictions</title>
+	</head>
+	<body>
+		<header>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			  <div class="container-fluid">
+				<a class="navbar-brand" href="#">Home</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				  <span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+				  <ul class="navbar-nav">
+					<li class="nav-item">
+					  <a class="nav-link" href="#">Fun Facts</a>
+					</li>
+					<li class="nav-item">
+					  <a class="nav-link" href="#">Predictions</a>
+					</li>
+				  </ul>
+				</div>
+			  </div>
+			</nav>
+		</header>
+		<main class="container">
+			<div class="row">
+				<div class="col-12 py-3 clearfix">
+					<h2 class="text-center">Pitch your movie and let us predict if it will be successful!</h2>
+				</div>
+			</div>
+			<div class="row">
+				<form>
+					<div class="mb-3">
+						<h6>Runtime (mins):</h6>
+						<input type="number" class="form-control" id="runtime" name="runtime" min="30" max="400">
+					</div>
+					<div class="mb-3">
+						<h6>Budget (USD):</h6>
+						<input type="number" class="form-control" id="budget" name="budget" min="0" max="356000000">
+					</div>
+					<div class="mb-3">
+						<h6>Rated:</h6>
+						<select class="form-select" id="rated" multiple="multiple"></select>
+					</div>
+					<div class="mb-3">
+					  <h6>Director:</h6>
+					  <select class="form-select" id="director" multiple="multiple"></select>
+					</div>
+					<div class="mb-3">
+					  <h6>Writer:</h6>
+					  <select class="form-select" id="writer" multiple="multiple"></select>
+					</div>
+					<div class="mb-3">
+					  <h6>Actors:</h6>
+					  <select class="form-select" id="actor" multiple="multiple"></select>
+					</div>
+					<div class="mb-3">
+					  <h6>Language:</h6>
+					  <select class="form-select" id="language" multiple="multiple"></select>
+					</div>
+					<div class="mb-3">
+					  <h6>Country:</h6>
+					  <select class="form-select" id="country" multiple="multiple"></select>
+					</div>
+					<div class="mb-3">
+					  <h6>Genre:</h6>
+					  <select class="form-select" id="genre" multiple="multiple"></select>
+					</div>
+					<div class="mb-3">
+					  <h6>Star:</h6>
+					  <select class="form-select" id="star" multiple="multiple"></select>
+					</div>
+ 					<!-- 
+ 					<div class="mb-3">
+					  <h6>Plot:</h6>
+					  <textarea class="form-control" id="plot" rows="5"></textarea>
+					</div>
+					-->
+					<div class="mb-3">
+						<button class="btn btn-primary" type="submit">Submit</button>
+					</div>
+         		</form>
+		</main>
+		<footer class="d-flex flex-wrap py-3 bg-light">
+			<div class="container">
+				<div class="row">
+					<p class="col text-muted">&copy; <script type="text/javascript"> document.write(new Date().getFullYear())</script></p>
+				</div>
+			</div>
+		</footer>
+		<!-- Separate Popper and Bootstrap JS -->
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+	</body>
+</html>

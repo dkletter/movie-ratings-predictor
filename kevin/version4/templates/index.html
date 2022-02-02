@@ -30,6 +30,14 @@
       <div class="col-md-12">
 
         <div class="well">
+          <h5>Runtime (mins):</h5>
+          <input type="number" id="runtime" name="runtime" min="0" max="300">
+        </div>
+        <div class="well">
+          <h5>Budget (USD):</h5>
+          <input type="number" id="budget" name="budget" min="0" max="10000000">
+        </div>
+        <div class="well">
           <h5>Rated:</h5>
           <select id="rated" multiple="multiple"></select>
         </div>
@@ -61,18 +69,34 @@
           <h5>Star:</h5>
           <select id="star" multiple="multiple"></select>
         </div>
+        <div>
+          <form method="POST" action="{{url_for('predict')}}">
+            <h5>plot:</h5>
+            <textarea name="plot" cols="30" rows="10">type your plot here (minimum 70 words)</textarea>
+            
+              <input type="submit" , value='predict!' >
+        
+          </form>
+        
+          <h5>plot:</h5>
+          <textarea id="plot" cols="30" rows="10">type your plot here (minimum 70 words)</textarea>
+        </div>
       </div>
     </div>
 
     <!-- submit for prediction -->
     <div class="row">
-      <button type="submit"  id="predict">Predict</button>
+      <button id="predict">Predict</button>
     </div>
   </div>
-  <h2> features: {{ features}}</h2>
+  <h2>PREDICTION</h2>
+    <br>
+    <h2> features: {{ features}}</h2>
+      <h2>Based on the selected features above, IMDB rating is : {{prediction}}</h2>
+    
+      
 
-
-  <script src="../static/logic.js"></script>
+      <script src="../static/logic.js"></script>
 </body>
 
 </html>

@@ -201,22 +201,35 @@ d3.select("#predict").on("click", () => {
     // console.log(this.selectedGenres);
     // console.log(this.selectedStars);
 
+
     let model = [];
 
-    // Rating
-    // console.log(selectedRatings);
-    ratingNames.forEach(val => {
-        if (selectedRatings && selectedRatings.includes(val)) {
+    // plot
+    let plot_text = document.getElementById("#plot").value();
+    console.log(plot_text);
+
+    // Runtime
+    let runtime = $("#runtime").val();
+    model.push(runtime ? Number(runtime) : 0);
+
+    // Budget
+    let budget = $("#budget").val();
+    model.push(budget ? Number(budget) : 0);
+
+    // Country
+    // console.log(this.selectedCountries);
+    this.countryNames.forEach(val => {
+        if (this.selectedCountries && this.selectedCountries.includes(val)) {
             model.push(1);
         } else {
             model.push(0);
         }
     });
 
-    // Director
-    // console.log(this.selectedDirectors);
-    this.directorNames.forEach(val => {
-        if (this.selectedDirectors && this.selectedDirectors.includes(val)) {
+    // Language
+    // console.log(this.selectedLanguages);
+    this.languageNames.forEach(val => {
+        if (this.selectedLanguages && this.selectedLanguages.includes(val)) {
             model.push(1);
         } else {
             model.push(0);
@@ -243,20 +256,21 @@ d3.select("#predict").on("click", () => {
         }
     });
 
-    // Language
-    // console.log(this.selectedLanguages);
-    this.languageNames.forEach(val => {
-        if (this.selectedLanguages && this.selectedLanguages.includes(val)) {
+
+    // Rating
+    // console.log(selectedRatings);
+    ratingNames.forEach(val => {
+        if (selectedRatings && selectedRatings.includes(val)) {
             model.push(1);
         } else {
             model.push(0);
         }
     });
 
-    // Country
-    // console.log(this.selectedCountries);
-    this.countryNames.forEach(val => {
-        if (this.selectedCountries && this.selectedCountries.includes(val)) {
+    // Director
+    // console.log(this.selectedDirectors);
+    this.directorNames.forEach(val => {
+        if (this.selectedDirectors && this.selectedDirectors.includes(val)) {
             model.push(1);
         } else {
             model.push(0);
@@ -289,8 +303,8 @@ d3.select("#predict").on("click", () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(model)
-    })
-    ;
-
-    
+    }).then((data) ==> {
+        console.log(data);
+        
+    });
 });

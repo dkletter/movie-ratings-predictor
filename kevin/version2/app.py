@@ -46,11 +46,11 @@ def home():
     int_features = [float(x) for x in request.form.values()]
     fin_features = [np.array(int_features)]
     pred = model.predict(fin_features)
-    output = round(pred[0], 1)
+    # output = (pred[0])
 
   
-    return render_template('index.html', prediction=output, features=fin_features) 
+    return render_template('index.html', prediction=pred, features=fin_features) 
     #  prediction=output,
 
 if __name__ == "__main__":
-  app.run(debug=True)
+  app.run(port=3000,debug=True)

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- D3 library -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+
+  <!-- boostrap and jquery library -->
+  <link rel="stylesheet" href="static/css/bootstrap.min.css" type="text/css" />
+  <script type="text/javascript" src="static/js/jquery.min.js"></script>
+  <script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+
+  <!-- multi-select plugin library -->
+  <script type="text/javascript" src="static/js/bootstrap-multiselect.js"></script>
+  <link rel="stylesheet" href="static/css/bootstrap-multiselect.css" type="text/css" />
+
+  <title>Prediction page</title>
+</head>
+
+<body>
+
+
+  <h1>IMDB RATING PREDICTION</h1>
+  <hr>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="well">
+          <h5>Runtime (mins):</h5>
+          <input type="number" id="runtime" name="runtime" min="0" max="300">
+        </div>
+        <div class="well">
+          <h5>Budget (USD):</h5>
+          <input type="number" id="budget" name="budget" min="0" max="10000000">
+        </div>
+        <div class="well">
+          <h5>Rated:</h5>
+          <select id="rated" multiple="multiple"></select>
+        </div>
+        <div class="well">
+          <h5>Director:</h5>
+          <select id="director" multiple="multiple"></select>
+        </div>
+        <div class="well">
+          <h5>Writer:</h5>
+          <select id="writer" multiple="multiple"></select>
+        </div>
+        <div class="well">
+          <h5>Actors:</h5>
+          <select id="actor" multiple="multiple"></select>
+        </div>
+        <div class="well">
+          <h5>Language:</h5>
+          <select id="language" multiple="multiple"></select>
+        </div>
+        <div class="well">
+          <h5>Country:</h5>
+          <select id="country" multiple="multiple"></select>
+        </div>
+        <div class="well">
+          <h5>Genre:</h5>
+          <select id="genre" multiple="multiple"></select>
+        </div>
+        <div class="well">
+          <h5>Star:</h5>
+          <select id="star" multiple="multiple"></select>
+        </div>
+      </div>
+    </div>
+
+    <!-- submit for prediction -->
+    <div class="row">
+      <button id="predict">Predict</button>
+    </div>
+    <div class="row">
+      <h2>Prediction</h2>
+      <span id="prediction"></span>
+    </div>
+  </div>
+
+  <script src="../static/logic.js"></script>
+</body>
+
+</html>

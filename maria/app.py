@@ -1,12 +1,10 @@
 from flask import Flask, render_template, redirect, jsonify, request
 import modelrun
-from flask_sqlalchemy import SQLAlchemy
+
 #from sqlalchemy.ext.automap import automap_base
 import os
 # Create an instance of Flask
 app = Flask(__name__)
-
-
 
 
 @ app.route('/')
@@ -23,7 +21,7 @@ def predic():
         interest_rate = request.form.get("int_rate")
         installement = request.form.get("installment")
         anual_income = request.form.get('anual_inc')
-        
+
         variables = [loan_amount, interest_rate,
                      installement,  anual_income]
         predict = modelrun.preprocess(variables)

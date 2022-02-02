@@ -298,5 +298,8 @@ d3.select("#predict").on("click", () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(model)
+    }).then((data) => {
+        console.log(data);
+        $("#prediction").text(data);
     });
 });

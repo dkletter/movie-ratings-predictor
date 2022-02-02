@@ -83,10 +83,18 @@ def predict():
 
     scaled_iunput = scaler.transform(input_data)
 
-    prediction = model.predict(scaled_iunput)
-    print(prediction)
+    predictionRating = model.predict(scaled_iunput)
+    print(predictionRating)
 
-    return jsonify(prediction.tolist())
+    prediction = 'This movie will gain IMDB rating: '
+    if predictionRating[0] == 0:
+        prediction = prediction + 'lower than 5'
+    elif predictionRating[0] == 1:
+        prediction = prediction + 'in a range between 5 and 7'
+    elif predictionRating[0] == 2:
+        prediction = prediction + 'greater than 7'
+
+    return jsonify(prediction)
 
 
 @app.route('/')

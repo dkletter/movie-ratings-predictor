@@ -30,6 +30,14 @@
       <div class="col-md-12">
 
         <div class="well">
+          <h5>Runtime (mins):</h5>
+          <input type="number" id="runtime" name="runtime" min="0" max="300">
+        </div>
+        <div class="well">
+          <h5>Budget (USD):</h5>
+          <input type="number" id="budget" name="budget" min="0" max="10000000">
+        </div>
+        <div class="well">
           <h5>Rated:</h5>
           <select id="rated" multiple="multiple"></select>
         </div>
@@ -67,6 +75,10 @@
     <!-- submit for prediction -->
     <div class="row">
       <button id="predict">Predict</button>
+    </div>
+    <div class="row">
+      <h2>Prediction</h2>
+      <span id="prediction"></span>
     </div>
   </div>
 

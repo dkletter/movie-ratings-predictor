@@ -71,15 +71,14 @@ def predict():
 
     predictedRating = performPrediction(request.json)
 
-    predictionRating = model.predict(scaled_iunput)
-    print(predictionRating)
+    print(predictedRating)
 
     prediction = 'This movie will gain IMDB rating: '
-    if predictionRating[0] == 0:
+    if predictedRating[0] == 0:
         prediction = prediction + 'lower than 5'
-    elif predictionRating[0] == 1:
+    elif predictedRating[0] == 1:
         prediction = prediction + 'in a range between 5 and 7'
-    elif predictionRating[0] == 2:
+    elif predictedRating[0] == 2:
         prediction = prediction + 'greater than 7'
 
     return jsonify(prediction)

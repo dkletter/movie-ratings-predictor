@@ -33,15 +33,15 @@ def performPrediction(inputData):
     #     if c in punctuation:
     #         plot_text = plot_text.replace(c, "")
 
-    # lemmatizer = WordNetLemmatizer()
-    # word_tokens = word_tokenize(plot_text)
+    lemmatizer = WordNetLemmatizer()
+    word_tokens = word_tokenize(plot_text)
 
-    # filtered_sentence = []
-    # for w in word_tokens:
-    #     if w not in stop_words:
-    #         filtered_sentence.append(lemmatizer.lemmatize(w))
+    filtered_sentence = []
+    for w in word_tokens:
+        if w not in stop_words:
+            filtered_sentence.append(lemmatizer.lemmatize(w))
 
-    # Text = TreebankWordDetokenizer().detokenize(filtered_sentence)
+    Text = TreebankWordDetokenizer().detokenize(filtered_sentence)
 
     tfIdfVectorizer = TfidfVectorizer(
         stop_words='english',
@@ -51,7 +51,7 @@ def performPrediction(inputData):
         use_idf=True,
         smooth_idf=True)
 
-    vectorized_text = tfIdfVectorizer.fit_transform([plot_text])
+    vectorized_text = tfIdfVectorizer.fit_transform([Text])
 
     top_features = ['past', 'secret', 'team', 'agent', 'return', 'son',
                     'set', 'school', 'save', 'relationship', 'story', 'power', 'police',

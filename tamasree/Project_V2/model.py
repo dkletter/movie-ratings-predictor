@@ -22,23 +22,26 @@ def performPrediction(inputData):
     print(inputData)
 
     first_part = inputData[:-1]
-    plot_text = inputData[-1]
+    print(first_part)
+    plot = inputData[-1:]
+    plot_text = plot[0]
+    print(plot_text)
 
 # removing punctuation from  input text
-    punctuation = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
-    for c in plot_text:
-        if c in punctuation:
-            plot_text = plot_text.replace(c, "")
+    # punctuation = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+    # for c in plot_text:
+    #     if c in punctuation:
+    #         plot_text = plot_text.replace(c, "")
 
-    lemmatizer = WordNetLemmatizer()
-    word_tokens = word_tokenize(plot_text)
+    # lemmatizer = WordNetLemmatizer()
+    # word_tokens = word_tokenize(plot_text)
 
-    filtered_sentence = []
-    for w in word_tokens:
-        if w not in stop_words:
-            filtered_sentence.append(lemmatizer.lemmatize(w))
+    # filtered_sentence = []
+    # for w in word_tokens:
+    #     if w not in stop_words:
+    #         filtered_sentence.append(lemmatizer.lemmatize(w))
 
-    Text = TreebankWordDetokenizer().detokenize(filtered_sentence)
+    # Text = TreebankWordDetokenizer().detokenize(filtered_sentence)
 
     tfIdfVectorizer = TfidfVectorizer(
         stop_words='english',
@@ -48,7 +51,7 @@ def performPrediction(inputData):
         use_idf=True,
         smooth_idf=True)
 
-    vectorized_text = tfIdfVectorizer.fit_transform([Text])
+    vectorized_text = tfIdfVectorizer.fit_transform([plot_text])
 
     top_features = ['past', 'secret', 'team', 'agent', 'return', 'son',
                     'set', 'school', 'save', 'relationship', 'story', 'power', 'police',
@@ -78,7 +81,7 @@ def performPrediction(inputData):
     # load the scaler
     scaler = load(open('scaler.pkl', 'rb'))
 
-    scaled_iunput = scaler.transform(final_array)
+    scaled_iunput = scaler.transform([final_array])
 
     prediction = model.predict(scaled_iunput)
 

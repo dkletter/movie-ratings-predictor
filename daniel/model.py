@@ -22,13 +22,16 @@ def performPrediction(inputData):
     print(inputData)
 
     first_part = inputData[:-1]
-    plot_text = inputData[-1]
+    print(first_part)
+    plot = inputData[-1:]
+    plot_text = plot[0]
+    print(plot_text)
 
 # removing punctuation from  input text
-    punctuation = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
-    for c in plot_text:
-        if c in punctuation:
-            plot_text = plot_text.replace(c, "")
+    # punctuation = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+    # for c in plot_text:
+    #     if c in punctuation:
+    #         plot_text = plot_text.replace(c, "")
 
     lemmatizer = WordNetLemmatizer()
     word_tokens = word_tokenize(plot_text)
@@ -48,25 +51,37 @@ def performPrediction(inputData):
         use_idf=True,
         smooth_idf=True)
 
-    tfIdf = tfIdfVectorizer.fit_transform([Text])
+    vectorized_text = tfIdfVectorizer.fit_transform([Text])
 
-    plot_array = tfIdf.toarray()
+    top_features = ['past', 'secret', 'team', 'agent', 'return', 'son',
+                    'set', 'school', 'save', 'relationship', 'story', 'power', 'police',
+                    'people', 'order', 'new', 'mysterious', 'stop', 'student', 'american',
+                    'time', 'town', 'travel', 'true', 'try', 'turn', 'war', 'way', 'wife', 'woman',
+                    'work', 'world', 'year', 'york', 'mother', 'mission', 'meet', 'daughter', 'event',
+                    'earth', 'discovers', 'discover', 'death', 'day', 'couple', 'man', 'come', 'city', 'child',
+                    'brother', 'boy', 'begin', 'fall', 'family', 'father', 'fight', 'force', 'forced', 'friend', 'girl',
+                    'group', 'help', 'high', 'home', 'house', 'lead', 'life', 'love', 'make', 'young']
 
-    index = tfIdfVectorizer.get_feature_names()
+    text_weight = vectorized_text.toarray()[0]
+    text_weight = text_weight.tolist()
+    word_list = tfIdfVectorizer.get_feature_names()
 
-    top_features = pd.DataFrame(tfIdf[0].T.todense(
-    ), index=tfIdfVectorizer.get_feature_names(), columns=["TF-IDF"])
+    new_weight_array = [0]*70
 
-    top_features = top_features.sort_values(
-        'TF-IDF', ascending=False).index.tolist()
-    number_weights = tfIdf[0].T.todense()
+    for word in word_list:
+        if word in top_features:
+            word_id = top_features.index(word)
+
+            new_weight_array[word_id] = text_weight[word_list.index(word)]
+
+    final_array = first_part + new_weight_array
 
     # load the model
     model = load(open('model.pkl', 'rb'))
     # load the scaler
     scaler = load(open('scaler.pkl', 'rb'))
 
-    scaled_iunput = scaler.transform(inputData)
+    scaled_iunput = scaler.transform([final_array])
 
     prediction = model.predict(scaled_iunput)
 

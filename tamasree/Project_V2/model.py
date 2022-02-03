@@ -1,4 +1,5 @@
 from pickle import dump
+import numpy as np
 import nltk
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
@@ -48,6 +49,8 @@ def performPrediction(inputData):
         smooth_idf=True)
 
     tfIdf = tfIdfVectorizer.fit_transform([Text])
+
+    plot_array = tfIdf.toarray()
 
     index = tfIdfVectorizer.get_feature_names()
 

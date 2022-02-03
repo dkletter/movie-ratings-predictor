@@ -5,6 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- Bootstrap CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<!-- Bootstrap multiselect plugin -->
+		<script type="text/javascript" src="js/bootstrap-multiselect.js"></script>
+		<link rel="stylesheet" href="css/bootstrap-multiselect.css" type="text/css"/>
 		<title>Your Movie Predictions</title>
 	</head>
 	<body>
@@ -31,61 +34,64 @@
 		<main class="container">
 			<div class="row">
 				<div class="col-12 py-3 clearfix">
-					<h2 class="text-center">Pitch your movie and let us predict if it will be successful!</h2>
+					<h1 class="text-center">Let us predict if your movie pitch will be successful.</h1>
 				</div>
 			</div>
 			<div class="row">
-				<form>
-					<div class="mb-3">
-						<h6>Runtime (mins):</h6>
-						<input type="number" class="form-control" id="runtime" name="runtime" min="30" max="400">
+				<form class="needs-validation">
+					<div class="col-6 mb-3">
+						<label for="runtime" class="form-label">Runtime (mins):</label>
+						<input type="number" class="form-control" id="runtime" name="runtime" placeholder="175" min="30" max="400" required>
 					</div>
-					<div class="mb-3">
-						<h6>Budget (USD):</h6>
-						<input type="number" class="form-control" id="budget" name="budget" min="0" max="356000000">
+					<div class="col-6 mb-3">
+						<label for="budget" class="form-label">Budget (USD): &nbsp; </label><span id="rangeval">0<!-- Default value --></span>
+						<input type="range" class="form-range" id="budget" min="0" max="356000000" step="100000" onInput="$('#rangeval').html($(this).val())">
 					</div>
-					<div class="mb-3">
-						<h6>Rated:</h6>
+					<div class="col-6 mb-3">
+						<label for="rated" class="form-label">Rated:</label>
 						<select class="form-select" id="rated" multiple="multiple"></select>
 					</div>
-					<div class="mb-3">
-					  <h6>Director:</h6>
+					<div class="col-6 mb-3">
+					  <label for="director" class="form-label">Director:</label>
 					  <select class="form-select" id="director" multiple="multiple"></select>
 					</div>
-					<div class="mb-3">
-					  <h6>Writer:</h6>
+					<div class="col-6 mb-3">
+					  <label for="writer" class="form-label">Writer:</label>
 					  <select class="form-select" id="writer" multiple="multiple"></select>
 					</div>
-					<div class="mb-3">
-					  <h6>Actors:</h6>
+					<div class="col-6 mb-3">
+					  <label for="actor" class="form-label">Actors:</label>
 					  <select class="form-select" id="actor" multiple="multiple"></select>
 					</div>
-					<div class="mb-3">
-					  <h6>Language:</h6>
+					<div class="col-6 mb-3">
+					  <label for="language" class="form-label">Language:</label>
 					  <select class="form-select" id="language" multiple="multiple"></select>
 					</div>
-					<div class="mb-3">
-					  <h6>Country:</h6>
+					<div class="col-6 mb-3">
+					  <label for="country" class="form-label">Country:</label>
 					  <select class="form-select" id="country" multiple="multiple"></select>
 					</div>
-					<div class="mb-3">
-					  <h6>Genre:</h6>
+					<div class="col-6 mb-3">
+					  <label for="genre" class="form-label">Genre:</label>
 					  <select class="form-select" id="genre" multiple="multiple"></select>
 					</div>
-					<div class="mb-3">
-					  <h6>Star:</h6>
+					<div class="col-6 mb-3">
+					  <label for="star" class="form-label">Star:</label>
 					  <select class="form-select" id="star" multiple="multiple"></select>
 					</div>
  					<!-- 
- 					<div class="mb-3">
-					  <h6>Plot:</h6>
+ 					<div class="col-6 mb-3">
+					  <label for="plot" class="form-label">Plot:</label>
 					  <textarea class="form-control" id="plot" rows="5"></textarea>
 					</div>
 					-->
-					<div class="mb-3">
-						<button class="btn btn-primary" type="submit">Submit</button>
+					<!-- Begin submit for prediction -->
+					<div class="col-6 mb-3">
+						<button type="submit" class="btn btn-primary" id="predict">Predict</button>
+						<span id="prediction"></span>
 					</div>
          		</form>
+         	</div>
 		</main>
 		<footer class="d-flex flex-wrap py-3 bg-light">
 			<div class="container">
@@ -94,6 +100,11 @@
 				</div>
 			</div>
 		</footer>
+		<script type="text/javascript" src="js/logic.js"></script>
+		<!-- jQuery -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		<!-- D3 -->
+		<script src="https://d3js.org/d3.v5.min.js"></script>
 		<!-- Separate Popper and Bootstrap JS -->
 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>

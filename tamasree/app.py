@@ -71,12 +71,10 @@ def predict():
 
     # predictedRating=performPrediction(request.json)
     #result = loaded_model.score(X_test, Y_test)
-
-    # load the model
+   
     input_data = [np.array(request.json)]
-    # input_data_reshaped = input_data.reshape(-1, 1)
-    # print(input_data_reshaped)
-
+    
+    # load the model
     model = load(open('model.pkl', 'rb'))
     # load the scaler
     scaler = load(open('scaler.pkl', 'rb'))

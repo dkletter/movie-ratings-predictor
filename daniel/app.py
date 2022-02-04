@@ -66,20 +66,35 @@ def fetchStar():
     return jsonify(data)
 
 
+@app.route('/rated')
+def fetchRated():
+    f = open('json_files/rated.json')
+    data = json.load(f)
+    f.close()
+    return jsonify(data)
+
+
+@app.route('/genre')
+def fetchGenre():
+    f = open('json_files/genre.json')
+    data = json.load(f)
+    f.close()
+    return jsonify(data)
+
+
 @app.route('/predict', methods=['POST'])
 def predict():
 
     predictedRating = performPrediction(request.json)
 
-    predictionRating = model.predict(scaled_iunput)
-    print(predictionRating)
+    print(predictedRating)
 
     prediction = 'This movie will gain IMDB rating: '
-    if predictionRating[0] == 0:
+    if predictedRating[0] == 0:
         prediction = prediction + 'lower than 5'
-    elif predictionRating[0] == 1:
+    elif predictedRating[0] == 1:
         prediction = prediction + 'in a range between 5 and 7'
-    elif predictionRating[0] == 2:
+    elif predictedRating[0] == 2:
         prediction = prediction + 'greater than 7'
 
     return jsonify(prediction)
@@ -92,3 +107,4 @@ def main():
 
 if __name__ == "__main__":
     app.run(debug=True)
+    

@@ -66,6 +66,22 @@ def fetchStar():
     return jsonify(data)
 
 
+@app.route('/rated')
+def fetchRated():
+    f = open('json_files/rated.json')
+    data = json.load(f)
+    f.close()
+    return jsonify(data)
+
+
+@app.route('/genre')
+def fetchGenre():
+    f = open('json_files/genre.json')
+    data = json.load(f)
+    f.close()
+    return jsonify(data)
+
+
 @app.route('/predict', methods=['POST'])
 def predict():
 
@@ -91,3 +107,4 @@ def main():
 
 if __name__ == "__main__":
     app.run(debug=True)
+    

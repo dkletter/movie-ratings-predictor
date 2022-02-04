@@ -125,7 +125,7 @@ d3.select("#genre").selectAll('option')
 
 d3.json("/director").then((data) => {
     //printinb data
-    //console.log(data);
+    console.log(data);
 
     this.directorNames = data.map(row => row.director);
 

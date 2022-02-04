@@ -77,7 +77,6 @@ d3.json("/language").then((data) => {
     });
 });
 
-
 d3.json("/writer").then((data) => {
     //printinb data
     console.log(data);

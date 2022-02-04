@@ -7,3 +7,8 @@
 	margin: auto;
 	width: 50%;
 }
+
+#hero {
+	background: url("../img/popcorn-at-movies.jpg") no-repeat center;
+	background-size: cover;
+}

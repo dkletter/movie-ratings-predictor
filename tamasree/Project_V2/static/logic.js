@@ -104,7 +104,7 @@ d3.json("/writer").then((data) => {
 });
 
 // Rated selection
-let ratingNames = ['R', 'PG-13', 'PG', 'G', 'NA']
+let ratingNames = ['G', 'NA', 'PG', 'PG-13', 'R']
 d3.select("#rated").selectAll('option')
     .data(ratingNames)
     .enter()
@@ -112,8 +112,9 @@ d3.select("#rated").selectAll('option')
     .text((d) => { return d; })
     .attr("value", function (d) { return d; });
 
-let genreNames = ['Action', 'Comedy', 'Drama', 'Biography', 'Animation', 'Crime', 'Adventure',
-    'Horror', 'Fantasy', 'Mystery', 'Thriller', 'Romance', 'Musical', 'Sport', 'Sci-Fi', 'Family']
+let genreNames = ['Action', 'Adventure', 'Animation', 'Biography',
+    'Comedy', 'Crime', 'Drama', 'Family', 'Fantasy', 'Horror', 'Musical',
+    'Mystery', 'Romance', 'Sci-Fi', 'Sport', 'Thriller']
 
 d3.select("#genre").selectAll('option')
     .data(genreNames)

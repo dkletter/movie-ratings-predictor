@@ -48,17 +48,6 @@ def performPrediction(inputData):
     tfIdfVectorizer = joblib.load("tdidf.joblib")
     tfIdf = tfIdfVectorizer.transform([Text])
 
-    # vectorized_text = tfIdfVectorizer.fit_transform([Text])
-
-    # top_features = ['past', 'secret', 'team', 'agent', 'return', 'son',
-    #                 'set', 'school', 'save', 'relationship', 'story', 'power', 'police',
-    #                 'people', 'order', 'new', 'mysterious', 'stop', 'student', 'american',
-    #                 'time', 'town', 'travel', 'true', 'try', 'turn', 'war', 'way', 'wife', 'woman',
-    #                 'work', 'world', 'year', 'york', 'mother', 'mission', 'meet', 'daughter', 'event',
-    #                 'earth', 'discovers', 'discover', 'death', 'day', 'couple', 'man', 'come', 'city', 'child',
-    #                 'brother', 'boy', 'begin', 'fall', 'family', 'father', 'fight', 'force', 'forced', 'friend', 'girl',
-    #                 'group', 'help', 'high', 'home', 'house', 'lead', 'life', 'love', 'make', 'young']
-
     new_weight_array = tfIdf.toarray()[0]
     print(new_weight_array)
 

@@ -14,10 +14,7 @@ d3.json("/actors").then((data) => {
         .append('option')
         .text((d) => { return d; })
         .attr("value", function (d) { return d; });
-
-
 });
-
 
 d3.json("/country").then((data) => {
     //printinb data
@@ -32,16 +29,6 @@ d3.json("/country").then((data) => {
         .append('option')
         .text((d) => { return d; })
         .attr("value", function (d) { return d; });
-
-    // enable multi-select
-    $('#country').multiselect({
-        onChange: (element, checked) => {
-            selectedCountries = [];
-            $('#country option:selected').each((index, selVal) => {
-                selectedCountries.push($(selVal).val());
-            });
-        }
-    });
 });
 
 d3.json("/language").then((data) => {
@@ -57,16 +44,6 @@ d3.json("/language").then((data) => {
         .append('option')
         .text((d) => { return d; })
         .attr("value", function (d) { return d; });
-
-    // enable multi-select
-    $('#language').multiselect({
-        onChange: (element, checked) => {
-            selectedLanguages = [];
-            $('#language option:selected').each((index, selVal) => {
-                selectedLanguages.push($(selVal).val());
-            });
-        }
-    });
 });
 
 d3.json("/writer").then((data) => {
@@ -82,16 +59,6 @@ d3.json("/writer").then((data) => {
         .append('option')
         .text((d) => { return d; })
         .attr("value", function (d) { return d; });
-
-    // enable multi-select
-    $('#writer').multiselect({
-        onChange: (element, checked) => {
-            selectedWriters = [];
-            $('#writer option:selected').each((index, selVal) => {
-                selectedWriters.push($(selVal).val());
-            });
-        }
-    });
 });
 
 // Rated selection
@@ -108,16 +75,6 @@ d3.json("/rated").then((data) => {
         .append('option')
         .text((d) => { return d; })
         .attr("value", function (d) { return d; });
-
-    // enable multi-select
-    $('#rated').multiselect({
-        onChange: (element, checked) => {
-            selectedRatings = [];
-            $('#rated option:selected').each((index, selVal) => {
-                selectedRatings.push($(selVal).val());
-            });
-        }
-    });
 });
 
 // genres selection
@@ -134,19 +91,7 @@ d3.json("/genre").then((data) => {
         .append('option')
         .text((d) => { return d; })
         .attr("value", function (d) { return d; });
-
-    // enable multi-select
-    $('#genre').multiselect({
-        onChange: (element, checked) => {
-            selectedGenres = [];
-            $('#genre option:selected').each((index, selVal) => {
-                selectedGenres.push($(selVal).val());
-            });
-        }
-    });
 });
-
-
 
 d3.json("/director").then((data) => {
     //printinb data
@@ -161,16 +106,6 @@ d3.json("/director").then((data) => {
         .append('option')
         .text((d) => { return d; })
         .attr("value", function (d) { return d; });
-
-    // enable multi-select
-    $('#director').multiselect({
-        onChange: (element, checked) => {
-            selectedDirectors = [];
-            $('#director option:selected').each((index, selVal) => {
-                selectedDirectors.push($(selVal).val());
-            });
-        }
-    });
 });
 
 d3.json("/star").then((data) => {
@@ -186,16 +121,6 @@ d3.json("/star").then((data) => {
         .append('option')
         .text((d) => { return d; })
         .attr("value", function (d) { return d; });
-
-    // enable multi-select
-    $('#star').multiselect({
-        onChange: (element, checked) => {
-            selectedStars = [];
-            $('#star option:selected').each((index, selVal) => {
-                selectedStars.push($(selVal).val());
-            });
-        }
-    });
 });
 
 $(document).ready(function () {

@@ -119,24 +119,18 @@ def prediction():
 @app.route('/predict', methods=['POST'])
 def predict():
 
-    # form1 = request.form.getlist('rated')
-    # print(form1)
-
-    # arr = np.array([form1])
-    # return jsonify(arr)
-    
     predictedlable = performPrediction(request.json)
     print(predictedlable)
 
-    prediction = 'This movie will gain IMDB rating:'    
+    prediction = 'We predict this movie will earn an IMDb rating: '    
     if predictedlable[0] == 0:
-        prediction = prediction + 'lower than 5'
+        prediction = prediction + 'lower than 5. Bummer!'
     
     elif predictedlable[0] == 1:
-        prediction = prediction + 'in a range between 5 and 8'
+        prediction = prediction + 'in a range between 5 and 7. Nice!'
     
     elif predictedlable[0] == 2:
-        prediction = prediction + 'greater than 8'
+        prediction = prediction + 'greater than 7. Woo-hoo!'
         
     return jsonify(prediction) 
  

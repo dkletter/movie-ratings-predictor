@@ -18,7 +18,6 @@ nltk.download('omw-1.4')
 nltk.download('stopwords')
 
 
-
 def performPrediction(inputData):
 
     print(inputData)

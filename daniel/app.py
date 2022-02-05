@@ -118,6 +118,12 @@ def prediction():
 
 @app.route('/predict', methods=['POST'])
 def predict():
+
+    # form1 = request.form.getlist('rated')
+    # print(form1)
+
+    # arr = np.array([form1])
+    # return jsonify(arr)
     
     predictedlable = performPrediction(request.json)
     print(predictedlable)

@@ -15,15 +15,7 @@ d3.json("/actors").then((data) => {
         .text((d) => { return d; })
         .attr("value", function (d) { return d; });
 
-    // enable multi-select
-    $('#actor').multiselect({
-        onChange: (element, checked) => {
-            selectedActors = [];
-            $('#actor option:selected').each((index, selVal) => {
-                selectedActors.push($(selVal).val());
-            });
-        }
-    });
+
 });
 
 

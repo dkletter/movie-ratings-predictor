@@ -122,17 +122,17 @@ def predict():
     predictedlable = performPrediction(request.json)
     print(predictedlable)
 
-    prediction = 'We predict this movie will earn an IMDb rating: '    
+    prediction = 'We predict this movie will earn an IMDb rating '    
     if predictedlable[0] == 0:
         prediction = prediction + 'lower than 5. Bummer!'
     
     elif predictedlable[0] == 1:
-        prediction = prediction + 'in a range between 5 and 7. Nice!'
+        prediction = prediction + 'between 5 and 7. Nice!'
     
     elif predictedlable[0] == 2:
         prediction = prediction + 'greater than 7. Woo-hoo!'
         
-    return jsonify(prediction) 
+    return jsonify(prediction)
  
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,0 +1,14 @@
+:root{
+	--bs-dark-rgb: 57, 158, 90;
+	--color: #1b2f33;
+}
+
+.form-container {
+	margin: auto;
+	width: 50%;
+}
+
+#hero {
+	background: url("../img/popcorn-at-movies.jpg") no-repeat center;
+	background-size: cover;
+}

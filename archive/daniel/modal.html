@@ -1,0 +1,29 @@
+MODAL:
+
+					<div class="mb-3">
+						<!-- Button trigger modal -->
+						<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#predict">I'm Feeling Lucky!</button>
+
+						<!-- Modal -->
+						<div class="modal fade" id="predict" tabindex="-1" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title">Prediction</h5>
+										<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+									</div>
+									<div class="modal-body">
+										<p id="prediction"></p>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+NON-MODAL:
+						<button type="button" class="btn btn-primary" id="predict">I'm Feeling Lucky!</button>
+						<h5 class="pt-3" id="prediction"></h5>
+

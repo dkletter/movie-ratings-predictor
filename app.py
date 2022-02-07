@@ -122,7 +122,7 @@ def predict():
     predictedlable = performPrediction(request.json)
     print(predictedlable)
 
-    prediction = 'We predict this movie will earn an IMDb rating '    
+    prediction = 'This movie will earn an IMDb rating '    
     if predictedlable[0] == 0:
         prediction = prediction + 'lower than 5. Bummer!'
     

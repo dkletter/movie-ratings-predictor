@@ -1,4 +1,4 @@
-# Movie Prediction App
+# Movie Ratings Predictor
 
 We analyzed a decade of movies, developed a machine learning model, and turned it into a flask app to predict if a movie will be a hit or a flop. Just fill out the form with some basic details, such as your budget, expected running time, director, actors, even the plot. We can predict with 71% confidence if your proposed movie will be successful.
 
